@@ -32,4 +32,4 @@ def reply_news(message):
 	if message.text == "новость" or message.text == "Новость":
 		news = get_news()
 		bot.send_message(message.chat.id,f"{news}")
-bot.infinity_polling()
+bot.infinity_polling(skip_pending=True)
