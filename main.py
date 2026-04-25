@@ -35,9 +35,5 @@ def anekdot(message):
 	if message.text == "анекдот" or message.text == "Анекдот":
 		joke = get_anekdot()
 		bot.send_message(message.chat.id,f"{joke}")
-while True:
-	try:
-		bot.delete_webhook()
-		bot.infinity_polling()
-	except Exception as e:
-		print(e)
+bot.delete_webhook()
+bot.infinity_polling()
