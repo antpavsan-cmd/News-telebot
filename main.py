@@ -31,8 +31,7 @@ def reply_news(message):
 	if message.text == "новость" or message.text == "Новость":
 		news = build_news()
 		bot.send_message(message.chat.id,f"{news}")
-def anekdot(message):
-	if message.text == "анекдот" or message.text == "Анекдот":
+	elif message.text == "анекдот" or message.text == "Анекдот":
 		joke = get_anekdot()
 		bot.send_message(message.chat.id,f"{joke}")
 bot.delete_webhook()

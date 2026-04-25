@@ -9,10 +9,9 @@ def get_anekdot():
 	try:
 		response = requests.get(url,headers = headers)
 		if response.status_code != 200:
-			joke = "что-то пошло не так"
 			return "беда при загрузке"
 		soup = BeautifulSoup(response.text, "html.parser")
-		jokes = soup.find_all("div", class_="text")
+		joke = soup.find("div", class_="text")
 		if joke:
 			return joke.text.strip()
 		else:
