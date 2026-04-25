@@ -37,6 +37,7 @@ def anekdot(message):
 		bot.send_message(message.chat.id,f"{joke}")
 while True:
 	try:
+		bot.delete_webhook()
 		bot.infinity_polling()
 	except Exception as e:
 		print(e)
