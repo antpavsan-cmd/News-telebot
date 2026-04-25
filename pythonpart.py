@@ -76,6 +76,6 @@ def build_news():
 	if obj == "кот":
 		obj = "кота"
 	news = f"{sub}{act} {obj}{twist}"
-	return print(news)
+	return news
 if __name__ == "__main__":
 	build_news()

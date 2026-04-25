@@ -31,7 +31,6 @@ def reply_news(message):
 	if message.text == "новость" or message.text == "Новость":
 		news = build_news()
 		bot.send_message(message.chat.id,f"{news}")
-@bot.message_handler(content_types=["text"])
 def anekdot(message):
 	if message.text == "анекдот" or message.text == "Анекдот":
 		joke = get_anekdot()

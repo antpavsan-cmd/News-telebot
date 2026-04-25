@@ -6,13 +6,18 @@ def get_anekdot():
 	headers = {
     "User-Agent": "Mozilla/5.0"
 }
-	response = requests.get(url,headers = headers)
-	soup = BeautifulSoup(response.text, "html.parser")
-	jokes = soup.find_all("div", class_="text")
-	for joke in jokes[:1]:
-		return joke.text.strip()
-	if response.status.code != 200:
-		joke = "что-то пошло не так"
-		return joke
+	try:
+		response = requests.get(url,headers = headers)
+		if response.status_code != 200:
+			joke = "что-то пошло не так"
+			return "беда при загрузке"
+		soup = BeautifulSoup(response.text, "html.parser")
+		jokes = soup.find_all("div", class_="text")
+		if joke:
+			return joke.text.strip()
+		else:
+			return "беда"
+	except Exception as e:
+		return f"Ошибка: {e}"
 if __name__=="__main__":
 	joke = get_anekdot()
