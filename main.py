@@ -34,5 +34,13 @@ def reply_news(message):
 	elif message.text == "анекдот" or message.text == "Анекдот":
 		joke = get_anekdot()
 		bot.send_message(message.chat.id,f"{joke}")
+@bot.inline_handler(lambda query: True)
+def inline_anek(query):
+	anek = get_anekdot()
+	news = build_news()
+	result1 = types.InlineQueryResultArticle(id="1",title = "новость",description=news[:50], input_message_content = types.InputTextMessageContent(news))
+	result2 = types.InlineQueryResultArticle(id="2",title = "анекдот",description=anek[:50], input_message_content = types.InputTextMessageContent(anek))
+	bot.answer_inline_query(query.id,[result1,result2],cache_time=1)
+	
 bot.delete_webhook()
 bot.infinity_polling()
